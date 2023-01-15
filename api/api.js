@@ -42,6 +42,10 @@ const getData = async () => {
 };
 // getData();
 
+cron.schedule("* 6,18 * * *", () => {
+  console.log("running a task every minute");
+});
+
 app.get("/data", (req, res) => {
   fs.readFile("./api/data.json", "utf8", (err, json) => {
     if (err) {
