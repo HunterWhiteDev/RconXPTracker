@@ -40,9 +40,12 @@ function App() {
 
   useEffect(() => {
     if (data) {
-      const keys = Object.keys(data[1]);
-      console.log(keys);
-      setKeysData(keys);
+      try {
+        const keys = Object.keys(data[1]);
+        setKeysData(keys);
+      } catch {
+        setKeysData([]);
+      }
     }
   }, [data]);
 
