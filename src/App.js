@@ -1,23 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import {
+  LineChart,
+  Line,
+  YAxis,
+  XAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 function App() {
+  const [data, setData] = useState(null);
+  const [keysData, setKeysData] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios.get("http://localhost:5123/data");
+      let dataSetsArr = [];
+      for (const entry in data) {
+        let plotObj = {};
+
+        for (const user in data[entry]) {
+          let userObj = data[entry][user];
+          plotObj["date"] = entry;
+          plotObj[userObj.username] = userObj.xp;
+        }
+
+        dataSetsArr.push(plotObj);
+      }
+
+      setData(dataSetsArr);
+    };
+
+    getData();
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      const keys = Object.keys(data[1]);
+      console.log(keys);
+      setKeysData(keys);
+    }
+  }, [data]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <LineChart
+        width={1920 / 2}
+        height={1080 / 2}
+        data={data}
+        margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+      >
+        <Line type="monotone" dataKey="level" stroke="#8884d8" />
+        {/* <Line type="monotone" dataKey="amount" stroke="#8884d8" /> */}
+        {keysData?.map((key) => (
+          <Line type="monotone" dataKey={key} stroke="#8884d8" />
+        ))}
+
+        <Line type="monotone" dataKey={"VividElites"} stroke="#8884d8" />
+
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        {/* <XAxis dataKey="name" tick={renderCustomAxisTick} /> */}
+        <XAxis dataKey={"date"} />
+        <YAxis />
+        <Tooltip />
+      </LineChart>
     </div>
   );
 }
