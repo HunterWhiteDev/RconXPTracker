@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get(`http://${url}/data`, {
+      const { data } = await axios.get(`http://15.204.204.186/data`, {
         headers: "Content-Type: application/json",
       });
       let dataSetsArr = [];
