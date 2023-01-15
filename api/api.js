@@ -43,7 +43,7 @@ const getData = async () => {
 // getData();
 
 cron.schedule("* 6,18 * * *", () => {
-  console.log("running a task every minute");
+  getData();
 });
 
 app.get("/data", (req, res) => {
