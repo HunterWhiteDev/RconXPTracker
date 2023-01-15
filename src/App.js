@@ -36,7 +36,6 @@ function App() {
     };
 
     getData();
-    console.log(process.env.REACT_APP_URL);
   }, []);
 
   useEffect(() => {
