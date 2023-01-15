@@ -9,13 +9,14 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
+const url = process.env.REACT_APP_URL;
 function App() {
   const [data, setData] = useState(null);
   const [keysData, setKeysData] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get("http://localhost:5123/data", {
+      const { data } = await axios.get(`http://${url}/data`, {
         headers: "Content-Type: application/json",
       });
       let dataSetsArr = [];
@@ -35,6 +36,7 @@ function App() {
     };
 
     getData();
+    console.log(process.env.REACT_APP_URL);
   }, []);
 
   useEffect(() => {
