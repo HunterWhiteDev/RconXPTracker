@@ -40,9 +40,9 @@ const getData = async () => {
     }
   });
 };
-// getData();
+getData();
 
-cron.schedule("* 6,18 * * *", () => {
+cron.schedule("* * 6,18 * * *", () => {
   getData();
 });
 
