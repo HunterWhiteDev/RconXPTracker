@@ -15,7 +15,9 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get("http://localhost:5123/data");
+      const { data } = await axios.get("http://localhost:5123/data", {
+        headers: "Content-Type: application/json",
+      });
       let dataSetsArr = [];
       for (const entry in data) {
         let plotObj = {};
