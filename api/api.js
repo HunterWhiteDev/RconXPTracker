@@ -4,7 +4,7 @@ const cron = require("node-cron");
 const axios = require("axios");
 const fs = require("fs");
 const cors = require("cors");
-const port = 5123;
+const port = 5124;
 
 // const corsOptions = {
 //   credentials: true, //access-control-allow-credentials:true
@@ -40,10 +40,10 @@ const getData = async () => {
     }
   });
 };
-getData();
+// getData();
 
-cron.schedule("* * 6,18 * * *", () => {
-  getData();
+cron.schedule("0 6,15 * * * *", () => {
+  console.log("cron");
 });
 
 app.get("/data", (req, res) => {
