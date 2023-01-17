@@ -42,7 +42,7 @@ const getData = async () => {
 };
 // getData();
 
-cron.schedule("0 6,15 * * * *", () => {
+cron.schedule("0 6,18 * * * *", () => {
   console.log("cron");
 });
 
