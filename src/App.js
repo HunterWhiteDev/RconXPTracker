@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get(`http://15.204.204.186:5123/data`, {
+      const { data } = await axios.get(`http://localhost:5124/data`, {
         headers: "Content-Type: application/json",
       });
       let dataSetsArr = [];
@@ -42,12 +42,20 @@ function App() {
     if (data) {
       try {
         const keys = Object.keys(data[1]);
-        setKeysData(keys);
+        let keysArr = [];
+        for (const key of keys) {
+          if (key !== "date") {
+            keysArr.push(key);
+          }
+        }
+        setKeysData(keysArr);
       } catch {
         setKeysData([]);
       }
     }
   }, [data]);
+
+  console.log(keysData);
 
   return (
     <div className="app">

@@ -42,8 +42,8 @@ const getData = async () => {
 };
 // getData();
 
-cron.schedule("0 6,18 * * * *", () => {
-  console.log("cron");
+cron.schedule("0 0 6,18 * * *", () => {
+  getData();
 });
 
 app.get("/data", (req, res) => {
