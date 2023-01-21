@@ -16,7 +16,7 @@ function App() {
   const [userTabs, setUserTabs] = useState();
 
   const getData = async () => {
-    const { data } = await axios.get(`http://localhost:5124/data`, {
+    const { data } = await axios.get(`http://15.204.204.186:5124/data`, {
       headers: "Content-Type: application/json",
     });
     let dataSetsArr = [];
