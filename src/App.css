@@ -1,4 +1,24 @@
 .app {
   /* background-color: rgb(20, 20, 20); */
   margin: 25px;
+  max-width: 100vw !important;
+  color: white;
+}
+
+.user-Tabs {
+  display: flex;
+  color: white;
+}
+
+.user-Tab {
+  border: 1px solid gray;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.active-tab {
+  color: black;
+  background-color: white;
 }
