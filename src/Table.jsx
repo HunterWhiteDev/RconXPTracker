@@ -7,9 +7,9 @@ function Table({ data = [] }) {
 
   useEffect(() => {
     if (data) {
-      const threeConst = data[data.length - 1] - data[data.length - 4];
-      const fiveConst = data[data.length - 1] - data[data.length - 6];
-      const sevenConst = data[data.length - 1] - data[data.length - 8];
+      const threeConst = data[data.length - 1] - data[data.length - 8];
+      const fiveConst = data[data.length - 1] - data[data.length - 12];
+      const sevenConst = data[data.length - 1] - data[data.length - 16];
       setThree(threeConst);
       setFive(fiveConst);
       setSeven(sevenConst);
